@@ -16,7 +16,6 @@ public class MainFrame implements Runnable{
 		/**
 		 *Creating new Panels
 		 */
-
 		Bme280BalconyPanel balcony = new Bme280BalconyPanel();
 		balcony.createUIBme280Balcony();
 
@@ -37,6 +36,18 @@ public class MainFrame implements Runnable{
 		basicFrame.setTitle(UiConstants.PROGRAM_TITLE);
 
 		/**
+		 * JMenu
+		 */
+		JMenuBar menuBar = new JMenuBar();
+		JMenu settingsMenu = new JMenu("Settings");
+		//EXIT Item
+		JMenuItem exitItem = new JMenuItem("Exit");
+		exitItem.addActionListener(e -> System.exit(0));
+		settingsMenu.add(exitItem);
+		//End Exit Item
+		menuBar.add(settingsMenu);
+
+		/**
 		 * Add panels on the MainFrame
 		 */
 		mainPanel.setLayout(new BorderLayout());
@@ -45,11 +56,9 @@ public class MainFrame implements Runnable{
 		mainPanel.add(SwitchPanel.switchPanel, BorderLayout.SOUTH);
 
 		basicFrame.getContentPane().add(mainPanel, BorderLayout.CENTER);
-
 		/**
-		 * Data update timer
-		 * DEPRECATED from class UpdateDataTimer
+		 * Add MenuBar on the Frame
 		 */
-//		new UpdateDataTimer().updateTimer();
+		basicFrame.setJMenuBar(menuBar);
 	}
 }

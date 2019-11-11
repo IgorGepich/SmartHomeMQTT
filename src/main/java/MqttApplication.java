@@ -17,7 +17,7 @@ import java.util.concurrent.*;
 public class MqttApplication  {
 	public static void main(String[] args){
 
-		ExecutorService executorService = Executors.newSingleThreadExecutor();
+		ExecutorService executorService = Executors.newFixedThreadPool(6);
 		executorService.execute(new MainFrame());
 		executorService.execute(new Bme280Temperature());
 		executorService.execute(new Bme280Humidity());
