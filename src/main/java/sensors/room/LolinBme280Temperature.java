@@ -7,14 +7,18 @@ package sensors.room;
 
 import constants.TopicConstants;
 import constants.UiConstants;
+import observer.IObserved;
+import observer.IObserver;
 import org.eclipse.paho.client.mqttv3.*;
 
-public class LolinBme280Temperature implements MqttCallback, Runnable {
+import java.util.ArrayList;
+import java.util.List;
+
+public class LolinBme280Temperature implements MqttCallback, Runnable, IObserved {
 
 	private static String tempMsg;
 
-//	public LolinBme280Temperature() throws MqttException {
-//	}
+	private List<IObserver> tempObserver = new ArrayList<>();
 
 	private void setTempMsg(String tempMsg) {
 		this.tempMsg = tempMsg;
@@ -46,11 +50,28 @@ public class LolinBme280Temperature implements MqttCallback, Runnable {
 	@Override
 	public void messageArrived(String s, MqttMessage mqttMessage) {
 		setTempMsg(mqttMessage.toString());
-		System.out.println("Lolin temp: " + mqttMessage);
+		notifyObservers();
 	}
 
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
 
+	}
+
+	@Override
+	public void addObserver(IObserver o) {
+		tempObserver.add(o);
+	}
+
+	@Override
+	public void removeObserver(IObserver o) {
+
+	}
+
+	@Override
+	public void notifyObservers() {
+		for(IObserver o : tempObserver){
+			o.onHandleEvent(getTempMsg());
+		}
 	}
 }

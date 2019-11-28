@@ -2,15 +2,22 @@ package sensors.room;
 
 import constants.TopicConstants;
 import constants.UiConstants;
+import observer.IObserved;
+import observer.IObserver;
 import org.eclipse.paho.client.mqttv3.*;
 
-public class LolinBme280Baro implements MqttCallback, Runnable {
+import java.util.ArrayList;
+import java.util.List;
+
+public class LolinBme280Baro implements MqttCallback, Runnable, IObserved {
 
 	/**
 	 * @param baroMsg - barometer value
 	 */
+
+	private List<IObserver> baroObserver = new ArrayList<>();
 	private static String baroMsg;
-	public void setBaroMsg(String baroMsg) {
+	private void setBaroMsg(String baroMsg) {
 		this.baroMsg = baroMsg;
 	}
 	public static String getBaroMsg() {
@@ -34,10 +41,27 @@ public class LolinBme280Baro implements MqttCallback, Runnable {
 	@Override
 	public void messageArrived(String s, MqttMessage mqttMessage) {
 		setBaroMsg(mqttMessage.toString());
-		System.out.println("Lolin baro: " + mqttMessage);
+		notifyObservers();
 	}
 
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
+	}
+
+	@Override
+	public void addObserver(IObserver o) {
+		baroObserver.add(o);
+	}
+
+	@Override
+	public void removeObserver(IObserver o) {
+
+	}
+
+	@Override
+	public void notifyObservers() {
+		for(IObserver o : baroObserver){
+			o.onHandleEvent(getBaroMsg());
+		}
 	}
 }

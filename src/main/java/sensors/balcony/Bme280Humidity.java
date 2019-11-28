@@ -11,7 +11,10 @@ import org.eclipse.paho.client.mqttv3.*;
 
 public class Bme280Humidity implements MqttCallback, Runnable {
 
-	private static String humMsg;
+	public static String humMsg;
+
+	public Bme280Humidity() {
+	}
 
 	public static String getHumMsg() {
 		return humMsg;
@@ -50,11 +53,6 @@ public class Bme280Humidity implements MqttCallback, Runnable {
 
 	@Override
 	public void connectionLost(Throwable cause) {
-		try{
-			System.out.println("Connection lost. Trying to reconnect...");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override

@@ -28,7 +28,7 @@ public class MainFrame implements Runnable{
 		/**
 		 * Basic Frame preferences
 		 */
-		JFrame basicFrame = new JFrame(){};
+		JFrame basicFrame = new JFrame();
 		basicFrame.setVisible(true);
 		basicFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		basicFrame.setBounds(400, 250, 800, 500);
@@ -39,13 +39,17 @@ public class MainFrame implements Runnable{
 		 * JMenu
 		 */
 		JMenuBar menuBar = new JMenuBar();
-		JMenu settingsMenu = new JMenu("Settings");
+		JMenu mainMenu = new JMenu("Menu");
 		//EXIT Item
 		JMenuItem exitItem = new JMenuItem("Exit");
-		exitItem.addActionListener(e -> System.exit(0));
-		settingsMenu.add(exitItem);
+		exitItem.addActionListener(e -> {
+			System.exit(0);
+		});
 		//End Exit Item
-		menuBar.add(settingsMenu);
+		JMenuItem settingsItem = new JMenuItem("Settings");
+		mainMenu.add(settingsItem);
+		mainMenu.add(exitItem);
+		menuBar.add(mainMenu);
 
 		/**
 		 * Add panels on the MainFrame

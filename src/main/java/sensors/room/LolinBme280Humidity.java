@@ -6,19 +6,25 @@ package sensors.room;
 
 import constants.TopicConstants;
 import constants.UiConstants;
+import observer.IObserved;
+import observer.IObserver;
 import org.eclipse.paho.client.mqttv3.*;
 
-public class LolinBme280Humidity implements MqttCallback, Runnable {
+import java.util.ArrayList;
+import java.util.List;
 
-	private static String tempMsg;
+public class LolinBme280Humidity implements MqttCallback, Runnable, IObserved {
 
-	public void setTempMsg(String tempMsg) {
-		this.tempMsg = tempMsg;
+	private static String humMsg;
+
+	private List<IObserver> humObserver = new ArrayList<>();
+
+	public void setHumMsg(String humMsg) {
+		this.humMsg = humMsg;
 	}
-	public static String getTempMsg() {
-		return tempMsg;
+	public static String getHumMsg() {
+		return humMsg;
 	}
-
 
 	public void run() {
 		try {
@@ -38,12 +44,29 @@ public class LolinBme280Humidity implements MqttCallback, Runnable {
 
 	@Override
 	public void messageArrived(String s, MqttMessage mqttMessage) {
-		setTempMsg(mqttMessage.toString());
-		System.out.println("Lolin hum: " + mqttMessage);
+		setHumMsg(mqttMessage.toString());
+//		System.out.println("Lolin hum: " + mqttMessage);
+		notifyObservers();
 	}
 
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
 
+	}
+
+	@Override
+	public void addObserver(IObserver o) {
+		humObserver.add(o);
+	}
+
+	@Override
+	public void removeObserver(IObserver o) {
+	}
+
+	@Override
+	public void notifyObservers() {
+		for(IObserver o : humObserver){
+			o.onHandleEvent(getHumMsg());
+		}
 	}
 }

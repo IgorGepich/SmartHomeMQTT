@@ -7,6 +7,7 @@ import org.eclipse.paho.client.mqttv3.*;
 public class Bme280Temperature implements MqttCallback, Runnable {
 
 	private static String tempMsg;
+
 	private void setTempMsg(String tempMsg) {
 		this.tempMsg = tempMsg;
 	}
