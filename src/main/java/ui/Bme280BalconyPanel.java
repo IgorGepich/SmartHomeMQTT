@@ -1,15 +1,17 @@
 package ui;
 
-import java.awt.*;
-import javax.swing.*;
-import static constants.UiConstants.*;
 import constants.UiConstants;
 
+import javax.swing.*;
+import java.awt.*;
+
+import static constants.UiConstants.*;
+
 public class Bme280BalconyPanel {
-	static JPanel balconyPanel = new JPanel(new FlowLayout());
-	static JLabel temperatureLabel = new JLabel();
-	static JLabel humidityLabel = new JLabel();
-	static JLabel barometerLabel = new JLabel();
+	public static JPanel balconyPanel = new JPanel(new FlowLayout());
+	public static JLabel temperatureLabel = new JLabel();
+	public static JLabel humidityLabel = new JLabel();
+	public static JLabel barometerLabel = new JLabel();
 
 	public void createUIBme280Balcony(){
 		balconyPanel.setBorder(BorderFactory.createTitledBorder(BORDER_TITLE_BALCONY));

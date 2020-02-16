@@ -45,7 +45,6 @@ public class LolinBme280Humidity implements MqttCallback, Runnable, IObserved {
 	@Override
 	public void messageArrived(String s, MqttMessage mqttMessage) {
 		setHumMsg(mqttMessage.toString());
-//		System.out.println("Lolin hum: " + mqttMessage);
 		notifyObservers();
 	}
 
