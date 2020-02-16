@@ -3,8 +3,10 @@
  * @version 1.1 Gradle
  */
 
+import sw.Switch;
 import sensors.balcony.Bme280Baro;
 import sensors.balcony.Bme280Humidity;
+import sensors.balcony.Bme280Temperature;
 import sensors.room.LolinBme280Baro;
 import sensors.room.LolinBme280Humidity;
 import sensors.room.LolinBme280Temperature;
@@ -18,24 +20,12 @@ import java.util.concurrent.TimeUnit;
 
 public class MqttApplication  {
 	public static void main(String[] args){
-//		UpdateDataTimer update = new UpdateDataTimer();
-//		update.run();
 
-		//Observer
-//		PrinterToCli printerToCli = new PrinterToCli();
-//
-//		LolinBme280Humidity lolinBme280Humidity = new LolinBme280Humidity();
-//		lolinBme280Humidity.addObserver(printerToCli);
-//
-//		LolinBme280Temperature lolinBme280Temperature = new LolinBme280Temperature();
-//		lolinBme280Temperature.addObserver(printerToCli);
-	//END Observer
 		ExecutorService executorService = Executors.newFixedThreadPool(6);
 
-//		executorService.execute(new Bme280TestSensor(Bme280TestSensor.getSensorMsg()));
 
 		executorService.execute(new MainFrame());
-//		executorService.execute(new Bme280Temperature());
+		executorService.execute(new Bme280Temperature());
 		executorService.execute(new Bme280Humidity());
 		executorService.execute(new Bme280Baro());
 		executorService.execute(new LolinBme280Temperature());
@@ -43,6 +33,8 @@ public class MqttApplication  {
 		executorService.execute(new LolinBme280Baro());
 //		executorService.execute(lolinBme280Humidity);
 //		executorService.execute(lolinBme280Temperature);
+
+		executorService.execute(new Switch());
 
 		ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 		scheduledExecutorService.scheduleWithFixedDelay(new UpdateDataTimer(), 5,15, TimeUnit.SECONDS);
