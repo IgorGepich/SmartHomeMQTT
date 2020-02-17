@@ -3,13 +3,14 @@
  * @version 1.1 Gradle
  */
 
-import sw.Switch;
 import sensors.balcony.Bme280Baro;
 import sensors.balcony.Bme280Humidity;
 import sensors.balcony.Bme280Temperature;
 import sensors.room.LolinBme280Baro;
 import sensors.room.LolinBme280Humidity;
 import sensors.room.LolinBme280Temperature;
+import sw.Lamp;
+import sw.LampPlus;
 import ui.MainFrame;
 import ui.UpdateDataTimer;
 
@@ -34,7 +35,11 @@ public class MqttApplication  {
 //		executorService.execute(lolinBme280Humidity);
 //		executorService.execute(lolinBme280Temperature);
 
-		executorService.execute(new Switch());
+/**
+* Lamp Switchers
+*/
+		executorService.execute(new Lamp());
+		executorService.execute(new LampPlus());
 
 		ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 		scheduledExecutorService.scheduleWithFixedDelay(new UpdateDataTimer(), 5,15, TimeUnit.SECONDS);

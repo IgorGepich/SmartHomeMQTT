@@ -14,5 +14,7 @@ public class TopicConstants {
 	public static final String LOLIN_BME_TEMPERATURE_TOPIC = "boardLolin/sensorBme280/temperature/BmeIndoorCelsius";
 	public static final String LOLIN_BME_BAROMETER_TOPIC = "boardLolin/sensorBme280/barometer/hectoPascal";
 
-	public static final String LAMP_TOPIC = "cmnd/sonoff_1.1/POWER";
+	public static final String LAMP_TOPIC = "cmnd/sonoff_1.0/POWER";
+	public static final String LAMP_PLUS_TOPIC = "cmnd/sonoff_1.1/POWER";
+	public static final String LAMP_FLORA_TOPIC = "cmnd/sonoff_1.2/POWER";
 }

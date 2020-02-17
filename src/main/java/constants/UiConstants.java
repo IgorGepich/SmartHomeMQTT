@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class UiConstants {
 	public static final String DEGREE  = " C\u00b0";
-	public static final String PROGRAM_TITLE = "MQTT Smarthome Application v.1.1";
+	public static final String PROGRAM_TITLE = "MQTT Smarthome Application v.1.2";
 	public static final Font FONT = new Font("Serif", Font.BOLD, 22);
 	public static final String HUMIDITY = " %";
 	public static final String BAROMETER = " hPa";
