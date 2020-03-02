@@ -1,7 +1,8 @@
 package ui;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
+
 import static constants.UiConstants.*;
 
 public class Bme280RoomPanel {
@@ -30,7 +31,7 @@ public class Bme280RoomPanel {
 //End Image Area
 
 
-	public void createUIRoom(){
+	public void createUIRoom() {
 		roomPanel.setBorder(BorderFactory.createTitledBorder(BORDER_TITLE_ROOM));
 
 		roomTemperatureLabel.setFont(FONT);
@@ -57,7 +58,7 @@ public class Bme280RoomPanel {
 		roomBarometerLabel.setHorizontalAlignment(JLabel.CENTER);
 		roomBarometerLabel.setBorder(BorderFactory.createTitledBorder(BORDER_TITLE_BAROMETER));
 		roomBarometerLabel.setPreferredSize(LABELSIZE);
-		roomBarometerLabel.setIcon(new ImageIcon(BAROMETER_LABEL_IMAGE));
+ 		roomBarometerLabel.setIcon(new ImageIcon(BAROMETER_LABEL_IMAGE));
 		roomPanel.add(roomBarometerLabel);
 	}
 }

@@ -6,6 +6,7 @@
 import sensors.balcony.Bme280Baro;
 import sensors.balcony.Bme280Humidity;
 import sensors.balcony.Bme280Temperature;
+import sensors.balcony.DS18B20Temperature;
 import sensors.room.LolinBme280Baro;
 import sensors.room.LolinBme280Humidity;
 import sensors.room.LolinBme280Temperature;
@@ -34,6 +35,8 @@ public class MqttApplication  {
 		executorService.execute(new LolinBme280Baro());
 //		executorService.execute(lolinBme280Humidity);
 //		executorService.execute(lolinBme280Temperature);
+
+		executorService.execute(new DS18B20Temperature());
 
 /**
 * Lamp Switchers

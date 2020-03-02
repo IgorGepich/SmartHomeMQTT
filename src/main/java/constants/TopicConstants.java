@@ -16,5 +16,7 @@ public class TopicConstants {
 
 	public static final String LAMP_TOPIC = "cmnd/sonoff_1.0/POWER";
 	public static final String LAMP_PLUS_TOPIC = "cmnd/sonoff_1.1/POWER";
-	public static final String LAMP_FLORA_TOPIC = "cmnd/sonoff_1.2/POWER";
+	public static final String FLORA_LAMP_TOPIC = "cmnd/sonoff_1.2/POWER";
+
+	public static final String DS_TEMPERATURE_TOPIC = "boardAmica/sensorDS/temperature/DsOutdoorCelsius";
 }

@@ -4,8 +4,10 @@ package ui;
  * @class MainFrame creates UI frames and panels
  */
 import constants.UiConstants;
-import java.awt.*;
+
 import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
 
 public class MainFrame implements Runnable{
 	private JPanel mainPanel = new JPanel();

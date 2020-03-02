@@ -4,6 +4,7 @@ import constants.UiConstants;
 import sensors.balcony.Bme280Baro;
 import sensors.balcony.Bme280Humidity;
 import sensors.balcony.Bme280Temperature;
+import sensors.balcony.DS18B20Temperature;
 import sensors.room.LolinBme280Baro;
 import sensors.room.LolinBme280Humidity;
 import sensors.room.LolinBme280Temperature;
@@ -20,9 +21,12 @@ public class UpdateDataTimer implements Runnable{
 		Bme280BalconyPanel.humidityLabel.setText(Bme280Humidity.getHumMsg() + UiConstants.HUMIDITY);
 		Bme280BalconyPanel.barometerLabel.setText(Bme280Baro.getBaroMsg() + UiConstants.BAROMETER);
 
+		Bme280BalconyPanel.dsTemperatureLabel.setText(DS18B20Temperature.getTempMsg() + UiConstants.DEGREE);
+
 		Bme280RoomPanel.roomTemperatureLabel.setText(LolinBme280Temperature.getTempMsg() + UiConstants.DEGREE);
 		Bme280RoomPanel.roomHumidityLabel.setText(LolinBme280Humidity.getHumMsg() + UiConstants.HUMIDITY);
 		Bme280RoomPanel.roomBarometerLabel.setText(LolinBme280Baro.getBaroMsg() + UiConstants.BAROMETER);
+
 	}
 
 

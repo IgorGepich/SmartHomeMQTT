@@ -13,7 +13,9 @@ public class Bme280BalconyPanel {
 	public static JLabel humidityLabel = new JLabel();
 	public static JLabel barometerLabel = new JLabel();
 
-	public void createUIBme280Balcony(){
+	public static JLabel dsTemperatureLabel = new JLabel();
+
+	public void createUIBme280Balcony() {
 		balconyPanel.setBorder(BorderFactory.createTitledBorder(BORDER_TITLE_BALCONY));
 
 // TEMPERATURE
@@ -45,6 +47,17 @@ public class Bme280BalconyPanel {
 		barometerLabel.setPreferredSize(LABELSIZE);
 		barometerLabel.setIcon(new ImageIcon(BAROMETER_LABEL_IMAGE));
 		balconyPanel.add(barometerLabel);
+
+// DS Temperature
+		dsTemperatureLabel.setFont(FONT);
+		dsTemperatureLabel.setOpaque(true);
+		dsTemperatureLabel.setVerticalAlignment(JLabel.CENTER);
+		dsTemperatureLabel.setHorizontalAlignment(JLabel.CENTER);
+		dsTemperatureLabel.setBorder(BorderFactory.createTitledBorder(BORDER_TITLE_DS_OUTDOOR));
+		dsTemperatureLabel.setPreferredSize(LABELSIZE);
+		dsTemperatureLabel.setIcon(new ImageIcon(TEMPERATURE_LABEL_IMAGE));
+		balconyPanel.add(dsTemperatureLabel);
+
 
 //		MainFrame.mainPanel.add(balconyPanel, BorderLayout.CENTER);
 
