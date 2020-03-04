@@ -58,7 +58,7 @@ public class Bme280Temperature implements MqttCallback, Runnable {
 		//TODO decide with exception
 			throws Exception {
 		setTempMsg(message.toString());
-		System.out.println("Amica temp: " + message);
+//		System.out.println("Amica temp: " + message);
 	}
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken token) {

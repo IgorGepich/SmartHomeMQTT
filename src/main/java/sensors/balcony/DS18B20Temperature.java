@@ -39,7 +39,7 @@ public class DS18B20Temperature implements MqttCallback, Runnable {
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		setTempMsg(message.toString());
-		System.out.println("DS temperature: " + message);
+//		System.out.println("DS temperature: " + message);
 	}
 
 	@Override

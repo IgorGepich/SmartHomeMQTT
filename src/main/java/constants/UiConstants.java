@@ -3,9 +3,9 @@ package constants;
 import java.awt.*;
 
 public class UiConstants {
-	public static final String DEGREE  = " C\u00b0";
 	public static final String PROGRAM_TITLE = "MQTT Smarthome v.1.2";
 	public static final Font FONT = new Font("Serif", Font.BOLD, 22);
+	public static final String DEGREE  = " C\u00b0";
 	public static final String HUMIDITY = " %";
 	public static final String BAROMETER = " hPa";
 
@@ -24,7 +24,7 @@ public class UiConstants {
 //	public static final String LOCAL_IP_ADDRESS = "tcp://10.0.1.7:1883";
 //	public static final String EXTERNAL_IP_ADDRESS = "tcp://77.122.9.2:1883";
 
-	public static final String TEMPERATURE_LABEL_IMAGE = "./src/main/java/ui/images/tempIcon.png";
+	public static final String TEMPERATURE_LABEL_IMAGE = "./src/main/res/tempIcon.png";
 	public static final String HUMIDITY_LABEL_IMAGE = "./src/main/java/ui/images/humiIcon.png";
 	public static final String BAROMETER_LABEL_IMAGE = "./src/main/java/ui/images/baroIcon.png";
 
@@ -36,4 +36,12 @@ public class UiConstants {
 	 * External IP Address
 	 */
 	public static final String IP_ADDRESS = "tcp://77.122.9.2:1883";
+
+	/**
+	 * Sensor Location
+	 */
+	public static final String LOCATION_ROOM = "room";
+	public static final String LOCATION_BALCONY = "balcony";
+	public static final String LOCATION_OUTDOOR = "outdoor";
+
 }

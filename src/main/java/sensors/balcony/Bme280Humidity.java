@@ -58,7 +58,7 @@ public class Bme280Humidity implements MqttCallback, Runnable {
 	@Override
 	public void messageArrived(String topic, MqttMessage message) throws Exception {
 		setHumMsg(message.toString());
-		System.out.println("Amica hum: " + message);
+//		System.out.println("Amica hum: " + message);
 	}
 
 	@Override

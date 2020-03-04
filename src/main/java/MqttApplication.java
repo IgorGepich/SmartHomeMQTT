@@ -3,10 +3,9 @@
  * @version 1.1 Gradle
  */
 
-import sensors.balcony.Bme280Baro;
-import sensors.balcony.Bme280Humidity;
-import sensors.balcony.Bme280Temperature;
-import sensors.balcony.DS18B20Temperature;
+import constants.TopicConstants;
+import constants.UiConstants;
+import sensors.balcony.*;
 import sensors.room.LolinBme280Baro;
 import sensors.room.LolinBme280Humidity;
 import sensors.room.LolinBme280Temperature;
@@ -25,7 +24,6 @@ public class MqttApplication  {
 
 		ExecutorService executorService = Executors.newFixedThreadPool(6);
 
-
 		executorService.execute(new MainFrame());
 		executorService.execute(new Bme280Temperature());
 		executorService.execute(new Bme280Humidity());
@@ -37,6 +35,18 @@ public class MqttApplication  {
 //		executorService.execute(lolinBme280Temperature);
 
 		executorService.execute(new DS18B20Temperature());
+
+		executorService.execute(new Sensor(UiConstants.LOCATION_OUTDOOR,
+				"DS",
+				UiConstants.IP_ADDRESS,
+				TopicConstants.DS_TEMPERATURE_TOPIC,
+				UiConstants.DEGREE));
+		executorService.execute(new Sensor(UiConstants.LOCATION_ROOM,
+				"Lolin",
+				UiConstants.IP_ADDRESS,
+				TopicConstants.LOLIN_BME_TEMPERATURE_TOPIC,
+				UiConstants.DEGREE));
+
 
 /**
 * Lamp Switchers

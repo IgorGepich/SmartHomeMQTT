@@ -53,7 +53,7 @@ public class Bme280Baro implements MqttCallback, Runnable{
 	@Override
 	public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
 		setBaroMsg(mqttMessage.toString());
-		System.out.println("Amica baro: " + mqttMessage);
+//		System.out.println("Amica baro: " + mqttMessage);
 	}
 
 	@Override
