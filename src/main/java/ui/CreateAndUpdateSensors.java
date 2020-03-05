@@ -8,7 +8,9 @@ import sensors.Sensor;
  Class UpdateDataTimer realize creating Sensors and updating data on screen
  */
 
-public class UpdateDataTimer implements Runnable{
+// TODO: 3/5/20 Separate Create and Update UI in other classes
+
+public class CreateAndUpdateSensors implements Runnable{
 
 		Sensor DsSensor = new Sensor("Outdoor",
 				"DS",
@@ -81,7 +83,7 @@ public class UpdateDataTimer implements Runnable{
 
 
 /**
- * Update UI data.
+ * Update UI data. Realisation with TIMER
  * Full working code. Deprecated from v1.0
  */
 //	void updateTimer(){

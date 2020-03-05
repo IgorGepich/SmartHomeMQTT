@@ -6,7 +6,7 @@
 import sw.Lamp;
 import sw.LampPlus;
 import ui.MainFrame;
-import ui.UpdateDataTimer;
+import ui.CreateAndUpdateSensors;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -27,6 +27,6 @@ public class MqttApplication  {
 		executorService.execute(new LampPlus());
 
 		ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-		scheduledExecutorService.scheduleWithFixedDelay(new UpdateDataTimer(), 5,15, TimeUnit.SECONDS);
+		scheduledExecutorService.scheduleWithFixedDelay(new CreateAndUpdateSensors(), 5,15, TimeUnit.SECONDS);
 	}
 }
