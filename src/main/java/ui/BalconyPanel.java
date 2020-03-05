@@ -7,7 +7,7 @@ import java.awt.*;
 
 import static constants.UiConstants.*;
 
-public class Bme280BalconyPanel {
+public class BalconyPanel {
 	public static JPanel balconyPanel = new JPanel(new FlowLayout());
 	public static JLabel temperatureLabel = new JLabel();
 	public static JLabel humidityLabel = new JLabel();

@@ -7,7 +7,6 @@ import constants.UiConstants;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 public class MainFrame implements Runnable{
 	private JPanel mainPanel = new JPanel();
@@ -18,10 +17,10 @@ public class MainFrame implements Runnable{
 		/**
 		 *Creating new Panels
 		 */
-		Bme280BalconyPanel balcony = new Bme280BalconyPanel();
+		BalconyPanel balcony = new BalconyPanel();
 		balcony.createUIBme280Balcony();
 
-		Bme280RoomPanel roomPanel = new Bme280RoomPanel();
+		RoomPanel roomPanel = new RoomPanel();
 		roomPanel.createUIRoom();
 
 		SwitchPanel switchPanel = new SwitchPanel();
@@ -57,8 +56,8 @@ public class MainFrame implements Runnable{
 		 * Add panels on the MainFrame
 		 */
 		mainPanel.setLayout(new BorderLayout());
-		mainPanel.add(Bme280BalconyPanel.balconyPanel, BorderLayout.NORTH);
-		mainPanel.add(Bme280RoomPanel.roomPanel, BorderLayout.CENTER);
+		mainPanel.add(BalconyPanel.balconyPanel, BorderLayout.NORTH);
+		mainPanel.add(RoomPanel.roomPanel, BorderLayout.CENTER);
 		mainPanel.add(SwitchPanel.switchPanel, BorderLayout.SOUTH);
 
 		basicFrame.getContentPane().add(mainPanel, BorderLayout.CENTER);

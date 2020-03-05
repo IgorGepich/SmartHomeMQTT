@@ -5,7 +5,7 @@ import java.awt.*;
 
 import static constants.UiConstants.*;
 
-public class Bme280RoomPanel {
+public class RoomPanel {
 	//TODO static
 	static JPanel roomPanel = new JPanel(new FlowLayout());
 	static JLabel roomTemperatureLabel = new JLabel();

@@ -3,7 +3,7 @@ package constants;
 import java.awt.*;
 
 public class UiConstants {
-	public static final String PROGRAM_TITLE = "MQTT Smarthome v.1.2";
+	public static final String PROGRAM_TITLE = "MQTT Smarthome v.2.0";
 	public static final Font FONT = new Font("Serif", Font.BOLD, 22);
 	public static final String DEGREE  = " C\u00b0";
 	public static final String HUMIDITY = " %";
