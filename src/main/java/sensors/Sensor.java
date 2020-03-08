@@ -1,5 +1,6 @@
 package sensors;
 
+import constants.UiConstants;
 import org.eclipse.paho.client.mqttv3.*;
 
 public class Sensor implements MqttCallback{
@@ -7,8 +8,6 @@ public class Sensor implements MqttCallback{
 	private String sensorDataValue;
 
 	private String sensorId;
-
-	private String ipAddress;
 
 	private String mqttTopic;
 
@@ -40,14 +39,6 @@ public class Sensor implements MqttCallback{
 		return mqttTopic;
 	}
 
-	public void setIpAddress(String ipAddress) {
-		this.ipAddress = ipAddress;
-	}
-
-	public String getIpAddress() {
-		return ipAddress;
-	}
-
 	public void setSensorId(String sensorId) {
 		this.sensorId = sensorId;
 	}
@@ -64,28 +55,23 @@ public class Sensor implements MqttCallback{
 		this.sensorDataValue = sensorDataValue;
 	}
 
-//	public Sensor() {
-//	}
-
-	public Sensor(String sensorLocation, String sensorId, String ipAddress, String mqttTopic, String sensorType) {
+	public Sensor(String sensorLocation, String sensorId, String mqttTopic, String sensorType) {
 		this.sensorLocation = sensorLocation;
 		this.sensorId = sensorId;
-		this.ipAddress = ipAddress;
 		this.mqttTopic = mqttTopic;
 		this.sensorType = sensorType;
 	}
 
 	public void connectMqttServer() {
 			try {
-			MqttClient sensor = new MqttClient(getIpAddress(), getSensorId());
+			MqttClient sensor = new MqttClient(UiConstants.IP_ADDRESS, getSensorId());
 			sensor.connect();
 			sensor.setCallback(this);
 			sensor.subscribe(getMqttTopic());
 			sensor.messageArrivedComplete(1, 0);
-
 			}
 			catch (MqttException e){
-
+				System.out.println("Can't connect to the server.");
 			}
 	}
 	@Override
@@ -93,7 +79,7 @@ public class Sensor implements MqttCallback{
 		setSensorDataValue(message.toString());
 		System.out.println("SENSOR LOCATION: " + getSensorLocation()
 				+ " SENSOR NAME: " + getSensorId()
-				+ " VALUE: " + message
+				+ " VALUE: " + getSensorDataValue()
 				+ getSensorType());
 	}
 
