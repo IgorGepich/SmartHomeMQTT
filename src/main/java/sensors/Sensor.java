@@ -15,40 +15,24 @@ public class Sensor implements MqttCallback{
 
 	private String sensorLocation;
 
-	public void setSensorLocation(String sensorLocation) {
-		this.sensorLocation = sensorLocation;
-	}
-
-	public String getSensorLocation() {
-		return sensorLocation;
-	}
-
-	public void setSensorType(String sensorType) {
-		this.sensorType = sensorType;
-	}
-
-	public String getSensorType() {
-		return sensorType;
-	}
-
-	public void setMqttTopic(String mqttTopic) {
-		this.mqttTopic = mqttTopic;
-	}
-
-	public String getMqttTopic() {
-		return mqttTopic;
-	}
-
-	public void setSensorId(String sensorId) {
-		this.sensorId = sensorId;
+	public String getSensorDataValue() {
+		return sensorDataValue;
 	}
 
 	public String getSensorId() {
 		return sensorId;
 	}
 
-	public String getSensorDataValue() {
-		return sensorDataValue;
+	public String getSensorType() {
+		return sensorType;
+	}
+
+	public String getMqttTopic() {
+		return mqttTopic;
+	}
+
+	public String getSensorLocation() {
+		return sensorLocation;
 	}
 
 	private void setSensorDataValue(String sensorDataValue) {
@@ -74,6 +58,7 @@ public class Sensor implements MqttCallback{
 				System.out.println("Can't connect to the server.");
 			}
 	}
+
 	@Override
 	public void messageArrived(String topic, MqttMessage message) {
 		setSensorDataValue(message.toString());
@@ -83,14 +68,11 @@ public class Sensor implements MqttCallback{
 				+ getSensorType());
 	}
 
-
 	@Override
 	public void connectionLost(Throwable cause) {
-
 	}
 
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken token) {
-
 	}
 }

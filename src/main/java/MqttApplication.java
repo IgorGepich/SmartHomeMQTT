@@ -6,8 +6,8 @@
 import sw.Lamp;
 import sw.LampFlora;
 import sw.LampPlus;
-import ui.UpdateSensorsData;
 import ui.MainFrame;
+import ui.UpdateSensorsData;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -17,8 +17,14 @@ import java.util.concurrent.TimeUnit;
 public class MqttApplication  {
 	public static void main(String[] args) {
 
+		UpdateSensorsData updateSensorsData = new UpdateSensorsData();
 		ExecutorService executorService = Executors.newSingleThreadExecutor();
 		executorService.execute(new MainFrame());
+
+		updateSensorsData.sensorConnector();
+
+		ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+		scheduledExecutorService.scheduleWithFixedDelay(updateSensorsData, 5,30, TimeUnit.SECONDS);
 
 /**
 * Lamp Switchers
@@ -26,8 +32,5 @@ public class MqttApplication  {
 		executorService.execute(new Lamp());
 		executorService.execute(new LampPlus());
 		executorService.execute(new LampFlora());
-
-		ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-		scheduledExecutorService.scheduleWithFixedDelay(new UpdateSensorsData(), 5,30, TimeUnit.SECONDS);
 	}
 }

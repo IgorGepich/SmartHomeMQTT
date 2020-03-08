@@ -7,33 +7,26 @@ import sensors.SensorCreater;
  Class UpdateDataTimer update data on screen
  */
 
-public class UpdateSensorsData implements Runnable {
+public class UpdateSensorsData extends SensorCreater implements Runnable {
 
-	SensorCreater sensorCreater = new SensorCreater();
-
-	// TODO: 3/5/20 Add List or Map to collect sensors
 	public void sensorConnector(){
-		sensorCreater.dsTemperatureSensor.connectMqttServer();
-		sensorCreater.lolinTemperatureSensor.connectMqttServer();
-		sensorCreater.lolinHumiditySensor.connectMqttServer();
-		sensorCreater.lolinBarometerSensor.connectMqttServer();
-		sensorCreater.amicaTemperatureSensor.connectMqttServer();
-		sensorCreater.amicaHumiditySensor.connectMqttServer();
-		sensorCreater.amicaBarometerSensor.connectMqttServer();
+		this.fillArray();
+		for (sensors.Sensor sensor : this.sensorArrayList) {
+			sensor.connectMqttServer();
+		}
 	}
 
 	@Override
 	public void run() {
-		sensorConnector();
-		BalconyPanel.dsTemperatureLabel.setText(sensorCreater.dsTemperatureSensor.getSensorDataValue() + UiConstants.DEGREE);
+		BalconyPanel.dsTemperatureLabel.setText(dsTemperatureSensor.getSensorDataValue() + UiConstants.DEGREE);
 
-		BalconyPanel.temperatureLabel.setText(sensorCreater.amicaTemperatureSensor.getSensorDataValue() + UiConstants.DEGREE);
-		BalconyPanel.humidityLabel.setText(sensorCreater.amicaHumiditySensor.getSensorDataValue() + UiConstants.HUMIDITY);
-		BalconyPanel.barometerLabel.setText(sensorCreater.amicaBarometerSensor.getSensorDataValue() + UiConstants.BAROMETER);
+		BalconyPanel.temperatureLabel.setText(amicaTemperatureSensor.getSensorDataValue() + UiConstants.DEGREE);
+		BalconyPanel.humidityLabel.setText(amicaHumiditySensor.getSensorDataValue() + UiConstants.HUMIDITY);
+		BalconyPanel.barometerLabel.setText(amicaBarometerSensor.getSensorDataValue() + UiConstants.BAROMETER);
 
-		RoomPanel.roomTemperatureLabel.setText(sensorCreater.lolinTemperatureSensor.getSensorDataValue() + UiConstants.DEGREE);
-		RoomPanel.roomHumidityLabel.setText(sensorCreater.lolinHumiditySensor.getSensorDataValue() + UiConstants.HUMIDITY);
-		RoomPanel.roomBarometerLabel.setText(sensorCreater.lolinBarometerSensor.getSensorDataValue() + UiConstants.BAROMETER);
+		RoomPanel.roomTemperatureLabel.setText(lolinTemperatureSensor.getSensorDataValue() + UiConstants.DEGREE);
+		RoomPanel.roomHumidityLabel.setText(lolinHumiditySensor.getSensorDataValue() + UiConstants.HUMIDITY);
+		RoomPanel.roomBarometerLabel.setText(lolinBarometerSensor.getSensorDataValue() + UiConstants.BAROMETER);
 	}
 
 
