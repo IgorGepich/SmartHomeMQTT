@@ -39,6 +39,9 @@ public class Sensor implements MqttCallback{
 		this.sensorDataValue = sensorDataValue;
 	}
 
+	public Sensor() {
+	}
+
 	public Sensor(String sensorLocation, String sensorId, String mqttTopic, String sensorType) {
 		this.sensorLocation = sensorLocation;
 		this.sensorId = sensorId;
@@ -62,10 +65,6 @@ public class Sensor implements MqttCallback{
 	@Override
 	public void messageArrived(String topic, MqttMessage message) {
 		setSensorDataValue(message.toString());
-		System.out.println("SENSOR LOCATION: " + getSensorLocation()
-				+ " SENSOR NAME: " + getSensorId()
-				+ " VALUE: " + getSensorDataValue()
-				+ getSensorType());
 	}
 
 	@Override
@@ -74,5 +73,16 @@ public class Sensor implements MqttCallback{
 
 	@Override
 	public void deliveryComplete(IMqttDeliveryToken token) {
+	}
+
+	@Override
+	public String toString() {
+		return "Sensor{" +
+				"sensorDataValue='" + sensorDataValue + '\'' +
+				", sensorId='" + sensorId + '\'' +
+				", mqttTopic='" + mqttTopic + '\'' +
+				", sensorType='" + sensorType + '\'' +
+				", sensorLocation='" + sensorLocation + '\'' +
+				'}';
 	}
 }

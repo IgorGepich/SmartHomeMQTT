@@ -4,19 +4,20 @@ import constants.TopicConstants;
 import constants.UiConstants;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SensorCreater {
 
-	public ArrayList <Sensor> sensorArrayList = new ArrayList<>();
+	public List<Sensor> sensorCollection = new ArrayList<>();
 
 	public void fillArray(){
-		sensorArrayList.add(dsTemperatureSensor);
-		sensorArrayList.add(lolinTemperatureSensor);
-		sensorArrayList.add(lolinHumiditySensor);
-		sensorArrayList.add(lolinBarometerSensor);
-		sensorArrayList.add(amicaTemperatureSensor);
-		sensorArrayList.add(amicaHumiditySensor);
-		sensorArrayList.add(amicaBarometerSensor);
+		sensorCollection.add(dsTemperatureSensor);
+		sensorCollection.add(lolinTemperatureSensor);
+		sensorCollection.add(lolinHumiditySensor);
+		sensorCollection.add(lolinBarometerSensor);
+		sensorCollection.add(amicaTemperatureSensor);
+		sensorCollection.add(amicaHumiditySensor);
+		sensorCollection.add(amicaBarometerSensor);
 	}
 
 	public Sensor dsTemperatureSensor = new Sensor("Outdoor",

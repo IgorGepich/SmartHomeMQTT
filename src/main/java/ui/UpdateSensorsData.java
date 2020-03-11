@@ -3,6 +3,9 @@ package ui;
 import constants.UiConstants;
 import sensors.SensorCreater;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  Class UpdateDataTimer update data on screen
  */
@@ -11,22 +14,44 @@ public class UpdateSensorsData extends SensorCreater implements Runnable {
 
 	public void sensorConnector(){
 		this.fillArray();
-		for (sensors.Sensor sensor : this.sensorArrayList) {
+		for (sensors.Sensor sensor : this.sensorCollection) {
 			sensor.connectMqttServer();
 		}
 	}
 
+	public Map<String, String> map = new HashMap<>();
+		public Map addValue(){
+			map.put(dsTemperatureSensor.getSensorId(), dsTemperatureSensor.getSensorDataValue());
+			map.put(amicaTemperatureSensor.getSensorId(), amicaTemperatureSensor.getSensorDataValue());
+			map.put(amicaHumiditySensor.getSensorId(), amicaHumiditySensor.getSensorDataValue());
+			map.put(amicaBarometerSensor.getSensorId(), amicaBarometerSensor.getSensorDataValue());
+			map.put(lolinTemperatureSensor.getSensorId(), lolinTemperatureSensor.getSensorDataValue());
+			map.put(lolinHumiditySensor.getSensorId(), lolinHumiditySensor.getSensorDataValue());
+			map.put(lolinBarometerSensor.getSensorId(), lolinBarometerSensor.getSensorDataValue());
+
+			return map;
+		}
+
+	public void find(){
+			for(Map.Entry<String, String> entry : map.entrySet()){
+				System.out.println(entry.getKey() + " : " + entry.getValue());
+			}
+	}
+
 	@Override
 	public void run() {
-		BalconyPanel.dsTemperatureLabel.setText(dsTemperatureSensor.getSensorDataValue() + UiConstants.DEGREE);
+		//unchecked
+		addValue();
+		find();
+		BalconyPanel.dsTemperatureLabel.setText(map.get(dsTemperatureSensor.getSensorId()) + UiConstants.DEGREE);
 
-		BalconyPanel.temperatureLabel.setText(amicaTemperatureSensor.getSensorDataValue() + UiConstants.DEGREE);
-		BalconyPanel.humidityLabel.setText(amicaHumiditySensor.getSensorDataValue() + UiConstants.HUMIDITY);
-		BalconyPanel.barometerLabel.setText(amicaBarometerSensor.getSensorDataValue() + UiConstants.BAROMETER);
+		BalconyPanel.temperatureLabel.setText(map.get(amicaTemperatureSensor.getSensorId()) + UiConstants.DEGREE);
+		BalconyPanel.humidityLabel.setText(map.get(amicaHumiditySensor.getSensorId()) + UiConstants.HUMIDITY);
+		BalconyPanel.barometerLabel.setText(map.get(amicaBarometerSensor.getSensorId()) + UiConstants.BAROMETER);
 
-		RoomPanel.roomTemperatureLabel.setText(lolinTemperatureSensor.getSensorDataValue() + UiConstants.DEGREE);
-		RoomPanel.roomHumidityLabel.setText(lolinHumiditySensor.getSensorDataValue() + UiConstants.HUMIDITY);
-		RoomPanel.roomBarometerLabel.setText(lolinBarometerSensor.getSensorDataValue() + UiConstants.BAROMETER);
+		RoomPanel.roomTemperatureLabel.setText(map.get(lolinTemperatureSensor.getSensorId()) + UiConstants.DEGREE);
+		RoomPanel.roomHumidityLabel.setText(map.get(lolinHumiditySensor.getSensorId()) + UiConstants.HUMIDITY);
+		RoomPanel.roomBarometerLabel.setText(map.get(lolinBarometerSensor.getSensorId()) + UiConstants.BAROMETER);
 	}
 
 
