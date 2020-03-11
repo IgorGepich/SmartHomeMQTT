@@ -21,12 +21,9 @@ public class UiConstants {
 
 	public static final String BORDER_TITLE_DS_OUTDOOR = "DS Outdoor Temp";
 
-//	public static final String LOCAL_IP_ADDRESS = "tcp://10.0.1.7:1883";
-//	public static final String EXTERNAL_IP_ADDRESS = "tcp://77.122.9.2:1883";
-
-	public static final String TEMPERATURE_LABEL_IMAGE = "./src/main/res/tempIcon.png";
-	public static final String HUMIDITY_LABEL_IMAGE = "./src/main/java/ui/images/humiIcon.png";
-	public static final String BAROMETER_LABEL_IMAGE = "./src/main/java/ui/images/baroIcon.png";
+	public static final String TEMPERATURE_LABEL_IMAGE = "./src/main/resources/images/tempIcon.png";
+	public static final String HUMIDITY_LABEL_IMAGE = "./src/main/resources/images/humiIcon.png";
+	public static final String BAROMETER_LABEL_IMAGE = "./src/main/resources/images/baroIcon.png";
 
 	/**
 	 * Local IP Address
@@ -37,6 +34,8 @@ public class UiConstants {
 	 */
 	public static final String IP_ADDRESS = "tcp://77.122.9.2:1883";
 
+
+	//TODO
 	/**
 	 * Sensor Location
 	 */

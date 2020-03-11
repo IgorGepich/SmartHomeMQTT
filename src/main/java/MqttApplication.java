@@ -17,10 +17,10 @@ import java.util.concurrent.TimeUnit;
 public class MqttApplication  {
 	public static void main(String[] args) {
 
-		UpdateSensorsData updateSensorsData = new UpdateSensorsData();
 		ExecutorService executorService = Executors.newSingleThreadExecutor();
 		executorService.execute(new MainFrame());
 
+		UpdateSensorsData updateSensorsData = new UpdateSensorsData();
 		updateSensorsData.sensorConnector();
 
 		ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();

@@ -6,7 +6,7 @@ package constants;
 
 public class TopicConstants {
 
-	// TODO: 3/3/20 Root topics
+	// TODO: 3/3/20 Root topics or ENUM
 
 	public static final String AMICA_BME_HUMIDITY_TOPIC = "boardAmica/sensorBme280/humidity/percentRelative";
 	public static final String AMICA_BME_TEMPERATURE_TOPIC = "boardAmica/sensorBme280/temperature/BmeIndoorCelsius";
@@ -21,6 +21,10 @@ public class TopicConstants {
 	public static final String FLORA_LAMP_TOPIC = "cmnd/sonoff_1.2/POWER";
 
 	public static final String DS_TEMPERATURE_TOPIC = "boardAmica/sensorDS/temperature/DsOutdoorCelsius";
+
+	public static final String LAMP_STATUS = "stat/sonoff_1.2/POWER";
+//	public static final String LAMP_STATUS = "tele/sonoff_1.0/STATE";
+
 
 	enum lamp {
 		LAMP_TOPIC,
