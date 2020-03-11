@@ -5,11 +5,14 @@ import sw.LampFlora;
 import sw.LampPlus;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import static constants.UiConstants.*;
+import static constants.UiConstants.BORDER_TITLE_SWITCH;
+import static constants.UiConstants.BUTTON_LABELSIZE;
 
 public class SwitchPanel {
 	static JPanel switchPanel = new JPanel(new FlowLayout());
@@ -55,6 +58,14 @@ public class SwitchPanel {
 			public void itemStateChanged(ItemEvent e) {
 				String buttonText = (lampPowerButton.isSelected()) ? "Lamp" : "Lamp";
 				lampPowerButton.setText(buttonText);
+
+			}
+		});
+// TODO StateChanged
+		lampPowerButton.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+
 			}
 		});
 		/**
