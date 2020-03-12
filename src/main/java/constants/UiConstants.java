@@ -28,7 +28,7 @@ public class UiConstants {
 	/**
 	 * Local IP Address
 	 */
-//	public static final String IP_ADDRESS = "tcp://10.0.1.7:1883";
+	//	public static final String IP_ADDRESS = "tcp://10.0.1.7:1883";
 	/**
 	 * External IP Address
 	 */
