@@ -1,6 +1,6 @@
 package sw;
 
-import constants.TopicConstants;
+import constants.MqttTopic;
 import constants.UiConstants;
 import org.eclipse.paho.client.mqttv3.*;
 
@@ -26,7 +26,7 @@ public class LampPlus implements MqttCallback, Runnable {
 			options.setCleanSession(true);
 			LampPlusClient.connect();
 			LampPlusClient.setCallback(this);
-			LampPlusClient.subscribe(TopicConstants.LAMP_PLUS_TOPIC);
+			LampPlusClient.subscribe(MqttTopic.LAMP_PLUS.getTopicPath());
 		} catch (MqttException e) {
 			e.printStackTrace();
 		}
@@ -55,7 +55,7 @@ public class LampPlus implements MqttCallback, Runnable {
 				message.setPayload("toggle"
 					.getBytes());
 			try {
-				LampPlusClient.publish(TopicConstants.LAMP_PLUS_TOPIC, message);
+				LampPlusClient.publish(MqttTopic.LAMP_PLUS.getTopicPath(), message);
 			} catch (MqttException ex) {
 				ex.printStackTrace();
 			}

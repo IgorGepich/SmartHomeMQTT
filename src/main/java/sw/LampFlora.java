@@ -1,6 +1,6 @@
 package sw;
 
-import constants.TopicConstants;
+import constants.MqttTopic;
 import constants.UiConstants;
 import org.eclipse.paho.client.mqttv3.*;
 
@@ -26,7 +26,7 @@ public class LampFlora implements MqttCallback, Runnable{
 			options.setCleanSession(true);
 			FloraLampClient.connect();
 			FloraLampClient.setCallback(this);
-			FloraLampClient.subscribe(TopicConstants.FLORA_LAMP_TOPIC);
+			FloraLampClient.subscribe(MqttTopic.LAMP_FLORA.getTopicPath());
 		} catch (MqttException e) {
 			e.printStackTrace();
 		}
@@ -55,7 +55,7 @@ public class LampFlora implements MqttCallback, Runnable{
 			message.setPayload("toggle"
 					.getBytes());
 			try {
-				FloraLampClient.publish(TopicConstants.FLORA_LAMP_TOPIC, message);
+				FloraLampClient.publish(MqttTopic.LAMP_FLORA.getTopicPath(), message);
 			} catch (MqttException ex) {
 				ex.printStackTrace();
 			}
