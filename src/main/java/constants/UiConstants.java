@@ -7,7 +7,7 @@ public class UiConstants {
 
 	public static final Dimension LABELSIZE = new Dimension(180, 80);
 	public static final Dimension BUTTON_LABELSIZE = new Dimension(140, 60);
-	
+
 	//TODO
 	/**
 	 * Sensor Location
