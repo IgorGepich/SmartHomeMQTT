@@ -1,5 +1,6 @@
 package ui;
 
+import constants.UiConstant;
 import sw.Lamp;
 import sw.LampFlora;
 import sw.LampPlus;
@@ -11,7 +12,6 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import static constants.UiConstants.BORDER_TITLE_SWITCH;
 import static constants.UiConstants.BUTTON_LABELSIZE;
 
 public class SwitchPanel {
@@ -21,7 +21,7 @@ public class SwitchPanel {
 	LampFlora.FloraLampListener floraLampListener = new LampFlora.FloraLampListener();
 
 	public void createUISwitch(){
-		switchPanel.setBorder(BorderFactory.createTitledBorder(BORDER_TITLE_SWITCH));
+		switchPanel.setBorder(BorderFactory.createTitledBorder(UiConstant.BORDER_TITLE_SWITCH.getUiConstant()));
 
 		/**
 		 * Lamp + Button area

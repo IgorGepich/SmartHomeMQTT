@@ -1,7 +1,7 @@
 package sw;
 
 import constants.MqttTopic;
-import constants.UiConstants;
+import constants.UiConstant;
 import org.eclipse.paho.client.mqttv3.*;
 
 import java.awt.event.ActionEvent;
@@ -13,7 +13,7 @@ public class LampPlus implements MqttCallback, Runnable {
 
 	{
 		try {
-			LampPlusClient = new MqttClient(UiConstants.IP_ADDRESS, "Lamp+");
+			LampPlusClient = new MqttClient(UiConstant.IP_ADDRESS.getUiConstant(), "Lamp+");
 		} catch (MqttException e) {
 			e.printStackTrace();
 		}

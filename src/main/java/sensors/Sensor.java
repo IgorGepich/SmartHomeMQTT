@@ -1,6 +1,6 @@
 package sensors;
 
-import constants.UiConstants;
+import constants.UiConstant;
 import org.eclipse.paho.client.mqttv3.*;
 
 public class Sensor implements MqttCallback{
@@ -51,7 +51,7 @@ public class Sensor implements MqttCallback{
 
 	public void connectMqttServer() {
 			try {
-			MqttClient sensor = new MqttClient(UiConstants.IP_ADDRESS, getSensorId());
+			MqttClient sensor = new MqttClient(UiConstant.IP_ADDRESS.getUiConstant(), getSensorId());
 			sensor.connect();
 			sensor.setCallback(this);
 			sensor.subscribe(getMqttTopic());

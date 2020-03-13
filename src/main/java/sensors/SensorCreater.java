@@ -1,7 +1,7 @@
 package sensors;
 
 import constants.MqttTopic;
-import constants.UiConstants;
+import constants.UiConstant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,35 +23,35 @@ public class SensorCreater {
 	public Sensor dsTemperatureSensor = new Sensor("Outdoor",
 			"DS",
 			MqttTopic.DS_TEMPERATURE.getTopicPath(),
-			UiConstants.DEGREE);
+			UiConstant.DEGREE.getUiConstant());
 
 	public Sensor lolinTemperatureSensor = new Sensor("Room",
 			"BmeRoomTemp",
 			MqttTopic.LOLIN_BME_TEMPERATURE.getTopicPath(),
-			UiConstants.DEGREE);
+			UiConstant.DEGREE.getUiConstant());
 
 	public Sensor lolinHumiditySensor = new Sensor("Room",
 			"BmeRoomHum",
 			MqttTopic.LOLIN_BME_HUMIDITY.getTopicPath(),
-			UiConstants.HUMIDITY);
+			UiConstant.HUMIDITY.getUiConstant());
 
 	public Sensor lolinBarometerSensor = new Sensor("Room",
 			"BmeRoomBaro",
 			MqttTopic.LOLIN_BME_BAROMETER.getTopicPath(),
-			UiConstants.BAROMETER);
+			UiConstant.BAROMETER.getUiConstant());
 
 	public Sensor amicaTemperatureSensor = new Sensor("Balcony",
 			"BmeBalconyTemp",
 			MqttTopic.AMICA_BME_TEMPERATURE.getTopicPath(),
-			UiConstants.DEGREE);
+			UiConstant.DEGREE.getUiConstant());
 
 	public Sensor amicaHumiditySensor = new Sensor("Balcony",
 			"BmeBalconyHumidity",
 			MqttTopic.AMICA_BME_HUMIDITY.getTopicPath(),
-			UiConstants.HUMIDITY);
+			UiConstant.HUMIDITY.getUiConstant());
 
 	public Sensor amicaBarometerSensor = new Sensor("Balcony",
 			"BmeBalconyBarometer",
 			MqttTopic.AMICA_BME_BAROMETER.getTopicPath(),
-			UiConstants.BAROMETER);
+			UiConstant.BAROMETER.getUiConstant());
 }

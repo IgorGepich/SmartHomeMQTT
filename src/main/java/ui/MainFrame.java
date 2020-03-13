@@ -3,7 +3,7 @@ package ui;
 /**
  * @class MainFrame creates UI frames and panels
  */
-import constants.UiConstants;
+import constants.UiConstant;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +34,7 @@ public class MainFrame implements Runnable{
 		basicFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		basicFrame.setBounds(400, 250, 800, 500);
 		basicFrame.setLocationRelativeTo(null);// center
-		basicFrame.setTitle(UiConstants.PROGRAM_TITLE);
+		basicFrame.setTitle(UiConstant.PROGRAM_TITLE.getUiConstant());
 
 		/**
 		 * JMenu
